@@ -53,6 +53,7 @@
    visibility: hidden;
    -webkit-transition: 0.3s ease 0s;
    transition: 0.3s ease 0s;
+   z-index: 5;
 }
 
 .menu__subItem:not(:last-child) {

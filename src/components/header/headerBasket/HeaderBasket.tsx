@@ -37,6 +37,7 @@ const HeaderBasket = () => {
             <div className={styles.basketBody}>
                 <div className={styles.basketBody__count}>Ваші товари: <span>{headerBasketItems.length}</span></div>
                 <HeaderBasketList products={headerBasketItems} />
+                <a href="" className={styles.basketBody__link}>Перейти до корзини</a>
             </div>
         </div>
     );

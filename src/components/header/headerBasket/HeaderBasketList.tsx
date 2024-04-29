@@ -6,7 +6,6 @@ const HeaderBasketList: React.FunctionComponent<{ products: Array<{ productName:
     return (
         <div className={styles.basketBody__items}>
             {products.map(x => (<HeaderBasketItem productName={x.productName} productPrice={x.productPrice} productColor={x.productColor} inputId={x.inputId} labelId={x.labelId} />))}
-            <a href="" className={styles.basketBody__link}>Перейти до корзини</a>
         </div>
     );
 }

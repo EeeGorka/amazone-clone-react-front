@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.swiper-slide-thumb {
+  position: relative;
+}
+
+.swiper-slide-thumb-active:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 3px solid #000;
+}
+
+
+.mainProductSlider.swiper {
+  max-width: 660px;
+}
+
+.swiper-wrapper {
+  max-width: 660px;
+}
+
+.swiper-slide {
+  min-width: 0;
+  max-width: 660px;
+}
+
+#subProductSlider .swiper-slide {
+  cursor: pointer;
+}
