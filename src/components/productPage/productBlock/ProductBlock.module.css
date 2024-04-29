@@ -10,8 +10,6 @@
    gap: 40px;
 }
 
-.productBlock__info {}
-
 .productBlock__top {
    padding-bottom: 25px;
    border-bottom: 0.5px solid #000;
@@ -132,8 +130,6 @@
    gap: 20px;
 }
 
-.productBlock__color li {}
-
 .productBlock__color a._active {
    position: relative;
    display: inline-block;
@@ -202,8 +198,6 @@
    border-top: 0.5px solid #000;
    padding-top: 30px;
 }
-
-.aboutProduct {}
 
 .aboutProduct__title {
    font-size: 32px;
