@@ -1,24 +1,25 @@
 import React from "react"
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
-import {subcategoryAPI} from "../../redux/api/subcategoryAPI";
-import {Table} from "react-bootstrap";
 import classes from "./AdminPage.module.css"
-import {productAPI} from "../../redux/api/productAPI";
-import {productColorAPI} from "../../redux/api/productColorAPI";
-import {categoryAPI} from "../../redux/api/categoryAPI";
-import {discountTypeAPI} from "../../redux/api/discountTypeAPI";
-import {discountAPI} from "../../redux/api/discountAPI";
-import {productTypeAPI} from "../../redux/api/productTypeAPI";
+
+import {
+    CategoryAdminTable,
+    CategoryImageAdminTable,
+    DiscountAdminTable,
+    DiscountTypeAdminTable,
+    ProductAdminTable,
+    ProductColorAdminTable,
+    ProductColorImageAdminTable,
+    ProductDetailKeyAdminTable,
+    ProductDetailValueAdminTable,
+    ProductReviewAdminTable,
+    ProductSizeAdminTable,
+    ProductTypeAdminTable,
+    SubcategoryAdminTable,
+    SubcategoryImageAdminTable
+} from "./AdminTables";
 
 const AdminPage: React.FunctionComponent = () => {
-
-    const {data: categories, isLoading: isLoadingCategories} = categoryAPI.useFetchCategoriesQuery();
-    const {data: subcategories, isLoading: isLoadingSubcategories} = subcategoryAPI.useFetchSubcategoriesQuery();
-    const {data: productTypes, isLoading: isLoadingProductTypes} = productTypeAPI.useFetchProductTypesQuery();
-    const {data: products, isLoading: isLoadingProducts} = productAPI.useFetchProductsQuery();
-    const {data: productColors, isLoading: isLoadingProductColors} = productColorAPI.useFetchProductColorsQuery();
-    const {data: discountTypes, isLoading: isLoadingDiscountTypes} = discountTypeAPI.useFetchDiscountTypesQuery();
-    const {data: discounts, isLoading: isLoadingDiscounts} = discountAPI.useFetchDiscountsQuery();
 
     return (
         <Tabs>
@@ -50,77 +51,79 @@ const AdminPage: React.FunctionComponent = () => {
                 <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Розміри
                 </Tab>
+                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                    Ключі деталей продукту
+                </Tab>
+                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                    Значення деталей продукту
+                </Tab>
+                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                    Картинки категорій
+                </Tab>
+                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                    Картинки підкатегорій
+                </Tab>
+                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                    Картинки кольору продукту
+                </Tab>
             </TabList>
-            <TabPanel>
-                { isLoadingCategories ?
-                    <div>Loading...</div> :
-                    categories && <AdminTable objects={categories}/>
-                }
-            </TabPanel>
-            <TabPanel>
-                { isLoadingSubcategories ?
-                    <div>Loading...</div> :
-                    subcategories && <AdminTable objects={subcategories}/>
-                }
-            </TabPanel>
-            <TabPanel>
-                { isLoadingProductTypes ?
-                    <div>Loading...</div> :
-                    productTypes && <AdminTable objects={productTypes}/>
-                }
-            </TabPanel>
-            <TabPanel>
-                { isLoadingProducts ?
-                    <div>Loading...</div> :
-                    products && <AdminTable objects={products}/>
-                }
-            </TabPanel>
-            <TabPanel>
-                { isLoadingProductColors ?
-                    <div>Loading...</div> :
-                    productColors && <AdminTable objects={productColors}/>
-                }
-            </TabPanel>
-            <TabPanel>
-                { isLoadingDiscountTypes ?
-                    <div>Loading...</div> :
-                    discountTypes && <AdminTable objects={discountTypes}/>
-                }
-            </TabPanel>
-            <TabPanel>
-                { isLoadingDiscounts ?
-                    <div>Loading...</div> :
-                    discounts && <AdminTable objects={discounts}/>
-                }
-            </TabPanel>
-            {/*TODO*/}
-            {/*Відгуки*/}
-            {/*Розміри*/}
-        </Tabs>
-    );
-}
 
-const AdminTable: React.FunctionComponent<{objects: Object[]}> = ({objects}) => {
-    return (
-        <Table striped bordered hover>
-            <thead>
-                <tr>
-                    {Object.keys(objects[0]).map(key=><th>{key}</th>)}
-                </tr>
-            </thead>
-            <tbody>
-                {objects.map(object => (
-                    <tr>
-                    {Object.values(object).map(value=>{
-                        if(typeof value === "object" && value) {
-                            return <td>{Object.values(value).join(', ')}</td>;
-                        }
-                        return (<td>{value}</td>);
-                        })}
-                    </tr>
-                ))}
-            </tbody>
-        </Table>
+            <TabPanel>
+                <CategoryAdminTable/>
+            </TabPanel>
+
+            <TabPanel>
+                <SubcategoryAdminTable/>
+            </TabPanel>
+
+            <TabPanel>
+                <ProductTypeAdminTable/>
+            </TabPanel>
+
+            <TabPanel>
+                <ProductAdminTable/>
+            </TabPanel>
+
+            <TabPanel>
+                <ProductColorAdminTable/>
+            </TabPanel>
+
+            <TabPanel>
+                <DiscountTypeAdminTable/>
+            </TabPanel>
+
+            <TabPanel>
+                <DiscountAdminTable/>
+            </TabPanel>
+
+            <TabPanel>
+                <ProductReviewAdminTable/>
+            </TabPanel>
+
+            <TabPanel>
+                <ProductSizeAdminTable/>
+            </TabPanel>
+
+            <TabPanel>
+                <ProductDetailKeyAdminTable/>
+            </TabPanel>
+
+            <TabPanel>
+                <ProductDetailValueAdminTable/>
+            </TabPanel>
+
+            <TabPanel>
+                <CategoryImageAdminTable/>
+            </TabPanel>
+
+            <TabPanel>
+                <SubcategoryImageAdminTable/>
+            </TabPanel>
+
+            <TabPanel>
+                <ProductColorImageAdminTable/>
+            </TabPanel>
+        </Tabs>
     );
 }
 
