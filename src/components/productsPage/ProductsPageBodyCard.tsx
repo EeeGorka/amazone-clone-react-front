@@ -1,7 +1,7 @@
 import styles from "./ProductsPageBodyCard.module.css";
 import IProduct from "../../interfaces/IProduct";
 
-const ProductsPageBodyCard: React.FunctionComponent<{ name: string, description: string, price: number, productTypeId: number, productColorsIds: number[], discount?: number }> = ({ name, description, price, productTypeId, productColorsIds, discount }) => {
+const ProductsPageBodyCard: React.FunctionComponent<{ product: IProduct & { discount?: number } }> = ({ product }) => {
    return (
       <div className={styles.bodyMain__item}>
          <div className={styles.bodyMain__image}>
@@ -13,9 +13,9 @@ const ProductsPageBodyCard: React.FunctionComponent<{ name: string, description:
             </a>
          </div>
          <a href="" className={styles.bodyMain__title}>
-            {name}
+            {product.name}
          </a>
-         <div className={`${styles.bodyMain__price} ${discount && styles.discount}`}>{price} грн{discount && <span>{`-${discount}%`}</span>}</div>
+         <div className={`${styles.bodyMain__price} ${product.discount && styles.discount}`}>{product.price} грн{product.discount && <span>{`-${product.discount}%`}</span>}</div>
       </div>
    );
 }
