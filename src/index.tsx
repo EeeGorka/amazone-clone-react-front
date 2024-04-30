@@ -11,6 +11,8 @@ import { Provider } from "react-redux";
 import store from "./redux/store/store"
 import './reset.css';
 import MainPage from "./components/mainPage/MainPage";
+import ProductPage from "./components/productPage/ProductPage";
+import ProductsPage from "./components/productsPage/ProductsPage";
 import AdminPage from "./components/adminPage/AdminPage";
 import { AdminAddCategoryImagePage, AdminAddCategoryPage } from "./components/adminPage/AdminAddPage";
 
@@ -19,6 +21,14 @@ const root = ReactDOM.createRoot(
 );
 
 const router = createBrowserRouter([
+    {
+        path: "/productPage",
+        element: <ProductPage />
+    },
+    {
+        path: "/productsPage",
+        element: <ProductsPage />
+    },
     {
         path: "/",
         element: <MainPage />
